@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, Linkedin, Twitter } from "lucide-react";
+import { Send, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/sundai-logo-horizontal.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -78,7 +78,7 @@ const Index = () => {
             <Link to="/sobre" className="nav-link">
               Sobre
             </Link>
-            <a href="#projetos" className="nav-link">
+            <a href="https://www.sundai.club/" target="_blank" rel="noopener noreferrer" className="nav-link">
               Projetos
             </a>
           </div>
@@ -89,8 +89,8 @@ const Index = () => {
           <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <Twitter className="h-5 w-5" />
+          <a href="https://www.instagram.com/sundailatam/" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Instagram className="h-5 w-5" />
           </a>
         </div>
 
@@ -111,16 +111,16 @@ const Index = () => {
             {/* Stats Section - Above Button */}
             <div className="mb-8 grid grid-cols-3 gap-8 max-w-2xl">
               <div className="flex flex-col items-center text-center">
-                <div className="stat-number">+1200</div>
-                <div className="stat-label">participantes</div>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="stat-number">+15</div>
-                <div className="stat-label">países</div>
+                <div className="stat-number">+1500</div>
+                <div className="stat-label">Membros da comunidade</div>
               </div>
               <div className="flex flex-col items-center text-center">
                 <div className="stat-number">+80</div>
-                <div className="stat-label">projetos com IA</div>
+                <div className="stat-label">Eventos</div>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="stat-number">+300</div>
+                <div className="stat-label">Projetos</div>
               </div>
             </div>
 
@@ -132,29 +132,32 @@ const Index = () => {
                 asChild
               >
                 <a href="https://luma.com/calendar/cal-xWAs0uanG8v1TES" target="_blank" rel="noopener noreferrer">
-                  Participe da próxima edição
+                  Inscreva-se na próxima edição
                 </a>
               </Button>
             </div>
 
             {/* Newsletter - Same width as button */}
-            <form onSubmit={handleEmailSubmit} className="relative w-full max-w-md">
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Seu melhor e-mail"
-                className="pr-12 h-12 bg-background/20 border-foreground/30 text-foreground placeholder:text-foreground/50"
-                required
-              />
-              <Button
-                type="submit"
-                size="icon"
-                className="absolute right-1 top-1 h-10 w-10 hover:brightness-90 transition-none"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
-            </form>
+            <div className="w-full max-w-md space-y-2">
+              <p className="text-sm text-foreground/70 font-medium">Receba novidades da comunidade</p>
+              <form onSubmit={handleEmailSubmit} className="relative w-full">
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Seu melhor e-mail"
+                  className="pr-12 h-12 bg-background/20 border-foreground/30 text-foreground placeholder:text-foreground/50"
+                  required
+                />
+                <Button
+                  type="submit"
+                  size="icon"
+                  className="absolute right-1 top-1 h-10 w-10 hover:brightness-90 transition-none"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
 

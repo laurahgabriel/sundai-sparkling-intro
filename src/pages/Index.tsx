@@ -123,7 +123,7 @@ const Index = () => {
         <div className="flex flex-1 items-center px-6 py-6 md:px-12 lg:px-20 bg-white md:bg-transparent">
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start w-full">
             {/* Left Section - Main Content */}
-            <div className="flex-1 max-w-2xl">
+            <div className="flex-[0.4] max-w-xl">
               {/* Mobile Social Icons - Left-aligned above Title */}
               <div className="md:hidden flex gap-6 mb-6">
                 <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
@@ -146,7 +146,7 @@ const Index = () => {
               </p>
 
               {/* Stats Section - Above Button */}
-              <div className="mb-8 grid grid-cols-3 gap-4 max-w-2xl">
+              <div className="mb-8 grid grid-cols-3 gap-1 max-w-2xl">
                 <div className="flex flex-col items-center text-center">
                   <div className="stat-number">+1500</div>
                   <div className="stat-label">Membros da comunidade</div>
@@ -203,8 +203,8 @@ const Index = () => {
             </div>
 
             {/* Right Section - Photo Carousel */}
-            <div className="w-full md:w-auto flex-shrink-0">
-              <div className="w-full max-w-[600px] mx-auto md:mx-0">
+            <div className="w-full md:flex-[0.6] flex-shrink-0">
+              <div className="w-full max-w-[900px] mx-auto md:mx-0">
                 <PhotoCarousel />
               </div>
             </div>

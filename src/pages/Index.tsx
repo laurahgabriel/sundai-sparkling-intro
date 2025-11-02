@@ -124,8 +124,8 @@ const Index = () => {
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start w-full">
             {/* Left Section - Main Content */}
             <div className="flex-1 max-w-2xl">
-              {/* Mobile Social Icons - Next to Title */}
-              <div className="md:hidden flex justify-center gap-6 mb-6">
+              {/* Mobile Social Icons - Left-aligned above Title */}
+              <div className="md:hidden flex gap-6 mb-6">
                 <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
                   <Linkedin className="h-5 w-5" />
                 </a>
@@ -146,7 +146,7 @@ const Index = () => {
               </p>
 
               {/* Stats Section - Above Button */}
-              <div className="mb-8 grid grid-cols-3 gap-8 max-w-2xl">
+              <div className="mb-8 grid grid-cols-3 gap-4 max-w-2xl">
                 <div className="flex flex-col items-center text-center">
                   <div className="stat-number">+1500</div>
                   <div className="stat-label">Membros da comunidade</div>

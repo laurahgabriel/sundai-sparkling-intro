@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import eventPhoto1 from "@/assets/event-photo-1.jpg";
+import eventPhoto2 from "@/assets/event-photo-2.jpg";
+import eventPhoto3 from "@/assets/event-photo-3.jpg";
+import eventPhoto4 from "@/assets/event-photo-4.jpg";
 
 const CAROUSEL_IMAGES = [
-  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop",
+  eventPhoto1,
+  eventPhoto2,
+  eventPhoto3,
+  eventPhoto4,
 ];
 
 export const PhotoCarousel = () => {

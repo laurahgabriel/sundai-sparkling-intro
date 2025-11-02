@@ -94,69 +94,86 @@ const Index = () => {
           </a>
         </div>
 
-        {/* Hero Content - Left Aligned */}
+        {/* Hero Content - Two Column Layout */}
         <div className="flex flex-1 items-center px-6 md:px-12 lg:px-20">
-          <div className="max-w-2xl">
-            <h1 className="mb-2 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl font-mono">
-              SundAI LATAM
-            </h1>
-            <h2 className="mb-8 text-3xl font-bold text-foreground/80 md:text-4xl lg:text-5xl font-mono">
-              Brazil chapter
-            </h2>
-            <p className="mb-10 text-lg leading-relaxed text-foreground/80 md:text-xl max-w-xl">
-              Criada no MIT, nosso propósito é espalhar o uso criativo de IA para resolver 
-              problemas reais, conectando estudantes, pesquisadores, empreendedores.
-            </p>
+          <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start w-full">
+            {/* Left Section - Main Content */}
+            <div className="flex-1 max-w-2xl">
+              <h1 className="mb-2 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl font-mono">
+                SundAI LATAM
+              </h1>
+              <h2 className="mb-8 text-3xl font-bold text-foreground/80 md:text-4xl lg:text-5xl font-mono">
+                Brazil chapter
+              </h2>
+              <p className="mb-10 text-lg leading-relaxed text-foreground/80 md:text-xl max-w-xl">
+                Criada no MIT, nosso propósito é espalhar o uso criativo de IA para resolver 
+                problemas reais, conectando estudantes, pesquisadores, empreendedores.
+              </p>
 
-            {/* Stats Section - Above Button */}
-            <div className="mb-8 grid grid-cols-3 gap-8 max-w-2xl">
-              <div className="flex flex-col items-center text-center">
-                <div className="stat-number">+1500</div>
-                <div className="stat-label">Membros da comunidade</div>
+              {/* Stats Section - Above Button */}
+              <div className="mb-8 grid grid-cols-3 gap-8 max-w-2xl">
+                <div className="flex flex-col items-center text-center">
+                  <div className="stat-number">+1500</div>
+                  <div className="stat-label">Membros da comunidade</div>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="stat-number">+80</div>
+                  <div className="stat-label">Eventos</div>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <div className="stat-number">+300</div>
+                  <div className="stat-label">Projetos</div>
+                </div>
               </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="stat-number">+80</div>
-                <div className="stat-label">Eventos</div>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="stat-number">+300</div>
-                <div className="stat-label">Projetos</div>
-              </div>
-            </div>
 
-            {/* Primary CTA */}
-            <div className="mb-4">
-              <Button
-                size="lg"
-                className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold hover:brightness-90 transition-none"
-                asChild
-              >
-                <a href="https://luma.com/calendar/cal-xWAs0uanG8v1TES" target="_blank" rel="noopener noreferrer">
-                  Inscreva-se na próxima edição
-                </a>
-              </Button>
-            </div>
-
-            {/* Newsletter - Same width as button */}
-            <div className="w-full max-w-md space-y-2">
-              <p className="text-sm text-foreground/70 font-medium">Receba novidades da comunidade</p>
-              <form onSubmit={handleEmailSubmit} className="relative w-full">
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Seu melhor e-mail"
-                  className="pr-12 h-12 bg-background/20 border-foreground/30 text-foreground placeholder:text-foreground/50"
-                  required
-                />
+              {/* Primary CTA */}
+              <div className="mb-4">
                 <Button
-                  type="submit"
-                  size="icon"
-                  className="absolute right-1 top-1 h-10 w-10 hover:brightness-90 transition-none"
+                  size="lg"
+                  className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold hover:brightness-90 transition-none"
+                  asChild
                 >
-                  <Send className="h-4 w-4" />
+                  <a href="https://luma.com/calendar/cal-xWAs0uanG8v1TES" target="_blank" rel="noopener noreferrer">
+                    Inscreva-se na próxima edição
+                  </a>
                 </Button>
-              </form>
+              </div>
+
+              {/* Newsletter - Same width as button */}
+              <div className="w-full max-w-md space-y-2">
+                <p className="text-sm text-foreground/70 font-medium">Receba novidades da comunidade</p>
+                <form onSubmit={handleEmailSubmit} className="relative w-full">
+                  <Input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Seu melhor e-mail"
+                    className="pr-12 h-12 bg-background/20 border-foreground/30 text-foreground placeholder:text-foreground/50"
+                    required
+                  />
+                  <Button
+                    type="submit"
+                    size="icon"
+                    className="absolute right-1 top-1 h-10 w-10 hover:brightness-90 transition-none"
+                  >
+                    <Send className="h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
+            </div>
+
+            {/* Right Section - Luma Calendar */}
+            <div className="w-full md:w-auto flex-shrink-0">
+              <div className="w-full max-w-[600px] mx-auto md:mx-0">
+                <iframe
+                  src="https://luma.com/embed/calendar/cal-xWAs0uanG8v1TES/events?lt=light"
+                  className="w-full h-[450px] rounded border border-border/50"
+                  frameBorder="0"
+                  allowFullScreen
+                  aria-hidden="false"
+                  tabIndex={0}
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>

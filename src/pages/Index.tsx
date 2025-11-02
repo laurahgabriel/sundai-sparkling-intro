@@ -15,6 +15,7 @@ import { QRCodeSVG } from 'qrcode.react';
 
 const Index = () => {
   const [email, setEmail] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState(""); // Store email after submission
   const [whatsapp, setWhatsapp] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showWhatsAppQR, setShowWhatsAppQR] = useState(false);
@@ -40,21 +41,44 @@ const Index = () => {
         const data = await response.json();
         console.log('Newsletter subscription successful:', data);
         
+        setSubmittedEmail(email); // Store the email for later use
         setShowModal(true);
         setShowWhatsAppQR(false);
         setEmail('');
       } catch (error) {
         console.error('Error submitting email:', error);
         // Still show modal on error for better UX
+        setSubmittedEmail(email);
         setShowModal(true);
         setShowWhatsAppQR(false);
       }
     }
   };
 
-  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+  const handleWhatsAppSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (whatsapp) {
+    if (whatsapp && submittedEmail) {
+      try {
+        // Update the subscriber with phone number
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/newsletter`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: submittedEmail, phone: whatsapp }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Error updating phone:', errorData);
+        }
+
+        const data = await response.json();
+        console.log('Phone number updated:', data);
+      } catch (error) {
+        console.error('Error updating phone:', error);
+      }
+      
       setShowWhatsAppQR(true);
     }
   };

@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Light background theme */
-    --background: 0 0% 98%;
+    --background: 0 0% 97%;
     --foreground: 0 0% 10%;
 
     /* Card overlays */
@@ -39,16 +39,16 @@
     --destructive-foreground: 0 0% 100%;
 
     /* Borders */
-    --border: 0 0% 85%;
+    --border: 0 0% 88%;
     --input: 0 0% 90%;
     --ring: 158 100% 50%;
 
     --radius: 0.5rem;
     
     /* Custom tokens for SundAI LATAM */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --grid-color: 0 0% 20%;
     --grid-glow: 158 100% 50%;
+    --footer-border: 0 0% 88%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -128,11 +128,19 @@
   }
   
   .stat-number {
-    @apply text-5xl md:text-6xl font-bold font-mono text-foreground;
+    @apply text-4xl md:text-5xl font-bold font-mono text-foreground;
   }
   
   .stat-label {
-    @apply text-sm md:text-base text-foreground/60 font-medium;
+    @apply text-xs md:text-sm text-foreground/60 font-medium mt-1;
+  }
+  
+  .social-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-full border-2 border-foreground/20 text-foreground/60 hover:border-primary hover:text-primary transition-colors duration-200;
+  }
+  
+  .footer-section {
+    @apply bg-card border-t border-border/50;
   }
   
   .geometric-bg {

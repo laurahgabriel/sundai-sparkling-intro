@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send } from "lucide-react";
+import { Send, Linkedin, Instagram } from "lucide-react";
+import { Twitter } from "lucide-react";
 import logo from "@/assets/sundai-logo-horizontal.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -49,14 +51,27 @@ const Index = () => {
             <span className="text-2xl">🇧🇷</span>
           </div>
           <div className="flex gap-6 md:gap-8">
-            <a href="#sobre" className="nav-link">
+            <Link to="/sobre" className="nav-link">
               Sobre
-            </a>
+            </Link>
             <a href="#projetos" className="nav-link">
               Projetos
             </a>
           </div>
         </nav>
+
+        {/* Fixed Social Icons */}
+        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Linkedin className="h-5 w-5" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Twitter className="h-5 w-5" />
+          </a>
+        </div>
 
         {/* Hero Content - Left Aligned */}
         <div className="flex flex-1 items-center px-6 md:px-12 lg:px-20">
@@ -73,16 +88,16 @@ const Index = () => {
             </p>
 
             {/* Stats Section - Above Button */}
-            <div className="mb-8 grid grid-cols-3 gap-6 max-w-2xl">
-              <div className="flex flex-col items-start">
+            <div className="mb-8 grid grid-cols-3 gap-8 max-w-2xl">
+              <div className="flex flex-col items-center text-center">
                 <div className="stat-number">+1200</div>
                 <div className="stat-label">participantes</div>
               </div>
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center">
                 <div className="stat-number">+15</div>
                 <div className="stat-label">países</div>
               </div>
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center">
                 <div className="stat-number">+80</div>
                 <div className="stat-label">projetos com IA</div>
               </div>
@@ -92,7 +107,7 @@ const Index = () => {
             <div className="mb-4">
               <Button
                 size="lg"
-                className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold transition-all hover:scale-105"
+                className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold hover:brightness-90 transition-none"
                 asChild
               >
                 <a href="https://lu.ma/sundai" target="_blank" rel="noopener noreferrer">
@@ -114,7 +129,7 @@ const Index = () => {
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1 top-1 h-10 w-10"
+                className="absolute right-1 top-1 h-10 w-10 hover:brightness-90 transition-none"
               >
                 <Send className="h-4 w-4" />
               </Button>
@@ -123,7 +138,7 @@ const Index = () => {
         </div>
 
         {/* Bottom Section - Carousel */}
-        <div className="px-6 pb-8 md:px-12 lg:px-20">
+        <div className="footer-section px-6 py-8 md:px-12 lg:px-20">
           <h3 className="text-sm font-medium text-foreground/60 mb-4 uppercase tracking-wider">
             Frequentado por
           </h3>
@@ -190,7 +205,7 @@ const Index = () => {
                     className="w-full"
                     required
                   />
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full hover:brightness-90 transition-none">
                     Confirmar
                   </Button>
                 </form>
@@ -205,7 +220,7 @@ const Index = () => {
                     />
                   </div>
                   <Button 
-                    className="w-full" 
+                    className="w-full hover:brightness-90 transition-none" 
                     asChild
                   >
                     <a 

@@ -86,14 +86,24 @@ const Index = () => {
   const whatsappGroupLink = "https://chat.whatsapp.com/JKHWWK5l0slDHFvg1dFI4Z?mode=wwt";
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
+    <div className="relative h-screen w-screen overflow-y-auto md:overflow-hidden scroll-smooth">
       {/* Geometric Background */}
       <div className="geometric-bg"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col">
+      <div className="relative z-10 flex h-full flex-col md:h-auto md:min-h-screen">
+        {/* Mobile Social Icons - Top */}
+        <div className="md:hidden flex justify-center gap-6 px-6 pt-6 pb-4">
+          <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Linkedin className="h-5 w-5" />
+          </a>
+          <a href="https://www.instagram.com/sundailatam/" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <Instagram className="h-5 w-5" />
+          </a>
+        </div>
+
         {/* Top Navigation */}
-        <nav className="flex items-center justify-between px-6 py-6 md:px-12 lg:px-20">
+        <nav className="flex items-center justify-between px-6 py-6 md:px-12 lg:px-20 bg-white md:bg-transparent border-b border-[#E0E0E0] md:border-0">
           <div className="flex items-center gap-2">
             <img src={logo} alt="SundAI LATAM" className="h-8 md:h-10" />
             <span className="text-2xl">🇧🇷</span>
@@ -108,8 +118,8 @@ const Index = () => {
           </div>
         </nav>
 
-        {/* Fixed Social Icons */}
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4">
+        {/* Fixed Social Icons - Desktop */}
+        <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-20 flex-col gap-4">
           <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Linkedin className="h-5 w-5" />
           </a>
@@ -119,7 +129,7 @@ const Index = () => {
         </div>
 
         {/* Hero Content - Two Column Layout */}
-        <div className="flex flex-1 items-center px-6 md:px-12 lg:px-20">
+        <div className="flex flex-1 items-center px-6 py-6 md:px-12 lg:px-20 bg-white md:bg-transparent">
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start w-full">
             {/* Left Section - Main Content */}
             <div className="flex-1 max-w-2xl">
@@ -151,7 +161,7 @@ const Index = () => {
               </div>
 
               {/* Primary CTA */}
-              <div className="mb-4">
+              <div className="mb-6">
                 <Button
                   size="lg"
                   className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold hover:brightness-90 transition-none"
@@ -163,9 +173,14 @@ const Index = () => {
                 </Button>
               </div>
 
+              {/* Divider */}
+              <div className="w-full max-w-md mb-6">
+                <div className="h-[1px] bg-[#E0E0E0]"></div>
+              </div>
+
               {/* Newsletter - Same width as button */}
               <div className="w-full max-w-md space-y-2">
-                <p className="text-sm text-foreground/70 font-medium">Receba novidades da comunidade</p>
+                <p className="text-sm text-foreground/70 font-medium">Assine nossa newsletter para receber novidades da comunidade</p>
                 <form onSubmit={handleEmailSubmit} className="relative w-full">
                   <Input
                     type="email"

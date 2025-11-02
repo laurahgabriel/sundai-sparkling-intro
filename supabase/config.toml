@@ -1,1 +1,4 @@
 project_id = "mjonorfjustddunznhlp"
+
+[functions.newsletter]
+verify_jwt = false

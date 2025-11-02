@@ -23,18 +23,29 @@ const Index = () => {
     e.preventDefault();
     if (email) {
       try {
-        await fetch('https://script.google.com/macros/s/AKfycbzjTvvD42FrOHy1laFEqiKbzDE_kuW4LqVNjtuZ5lyJU1rThRnWcYSrREtFjEG-0BpE/exec', {
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/newsletter`, {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email }),
         });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Error submitting email:', errorData);
+          throw new Error(errorData.error || 'Failed to subscribe');
+        }
+
+        const data = await response.json();
+        console.log('Newsletter subscription successful:', data);
+        
         setShowModal(true);
         setShowWhatsAppQR(false);
+        setEmail('');
       } catch (error) {
         console.error('Error submitting email:', error);
+        // Still show modal on error for better UX
         setShowModal(true);
         setShowWhatsAppQR(false);
       }

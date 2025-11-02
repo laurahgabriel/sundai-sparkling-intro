@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { QRCodeSVG } from 'qrcode.react';
+import { PhotoCarousel } from "@/components/PhotoCarousel";
 
 const Index = () => {
   const [email, setEmail] = useState("");
@@ -92,16 +93,6 @@ const Index = () => {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col md:h-auto md:min-h-screen">
-        {/* Mobile Social Icons - Top */}
-        <div className="md:hidden flex justify-center gap-6 px-6 pt-6 pb-4">
-          <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a href="https://www.instagram.com/sundailatam/" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <Instagram className="h-5 w-5" />
-          </a>
-        </div>
-
         {/* Top Navigation */}
         <nav className="flex items-center justify-between px-6 py-6 md:px-12 lg:px-20 bg-white md:bg-transparent border-b border-[#E0E0E0] md:border-0">
           <div className="flex items-center gap-2">
@@ -133,6 +124,16 @@ const Index = () => {
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-center md:items-start w-full">
             {/* Left Section - Main Content */}
             <div className="flex-1 max-w-2xl">
+              {/* Mobile Social Icons - Next to Title */}
+              <div className="md:hidden flex justify-center gap-6 mb-6">
+                <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="https://www.instagram.com/sundailatam/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </div>
+
               <h1 className="mb-2 text-5xl font-bold text-foreground md:text-6xl lg:text-7xl font-mono">
                 SundAI LATAM
               </h1>
@@ -201,17 +202,10 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right Section - Luma Calendar */}
+            {/* Right Section - Photo Carousel */}
             <div className="w-full md:w-auto flex-shrink-0">
               <div className="w-full max-w-[600px] mx-auto md:mx-0">
-                <iframe
-                  src="https://luma.com/embed/calendar/cal-xWAs0uanG8v1TES/events?lt=light"
-                  className="w-full h-[450px] rounded border border-border/50"
-                  frameBorder="0"
-                  allowFullScreen
-                  aria-hidden="false"
-                  tabIndex={0}
-                ></iframe>
+                <PhotoCarousel />
               </div>
             </div>
           </div>

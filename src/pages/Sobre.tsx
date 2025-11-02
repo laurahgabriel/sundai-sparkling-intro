@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Twitter } from "lucide-react";
+import { Linkedin, Twitter } from "lucide-react";
 import logo from "@/assets/sundai-logo-horizontal.svg";
 import { Link } from "react-router-dom";
 
@@ -28,13 +28,10 @@ const Sobre = () => {
 
         {/* Fixed Social Icons */}
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <Instagram className="h-5 w-5" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Twitter className="h-5 w-5" />
           </a>
         </div>

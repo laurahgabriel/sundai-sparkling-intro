@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send, Linkedin, Instagram } from "lucide-react";
-import { Twitter } from "lucide-react";
+import { Send, Linkedin, Twitter } from "lucide-react";
 import logo from "@/assets/sundai-logo-horizontal.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -20,11 +19,25 @@ const Index = () => {
   const [showModal, setShowModal] = useState(false);
   const [showWhatsAppQR, setShowWhatsAppQR] = useState(false);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      setShowModal(true);
-      setShowWhatsAppQR(false);
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbzjTvvD42FrOHy1laFEqiKbzDE_kuW4LqVNjtuZ5lyJU1rThRnWcYSrREtFjEG-0BpE/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+        setShowModal(true);
+        setShowWhatsAppQR(false);
+      } catch (error) {
+        console.error('Error submitting email:', error);
+        setShowModal(true);
+        setShowWhatsAppQR(false);
+      }
     }
   };
 
@@ -35,7 +48,7 @@ const Index = () => {
     }
   };
 
-  const whatsappGroupLink = "https://chat.whatsapp.com/your-group-link";
+  const whatsappGroupLink = "https://chat.whatsapp.com/JKHWWK5l0slDHFvg1dFI4Z?mode=wwt";
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
@@ -62,13 +75,10 @@ const Index = () => {
 
         {/* Fixed Social Icons */}
         <div className="fixed right-6 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.linkedin.com/company/sundailatam/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Linkedin className="h-5 w-5" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <Instagram className="h-5 w-5" />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon">
             <Twitter className="h-5 w-5" />
           </a>
         </div>
@@ -110,7 +120,7 @@ const Index = () => {
                 className="w-full max-w-md px-8 py-6 text-base md:text-lg font-bold hover:brightness-90 transition-none"
                 asChild
               >
-                <a href="https://lu.ma/sundai" target="_blank" rel="noopener noreferrer">
+                <a href="https://luma.com/calendar/cal-xWAs0uanG8v1TES" target="_blank" rel="noopener noreferrer">
                   Participe da próxima edição
                 </a>
               </Button>

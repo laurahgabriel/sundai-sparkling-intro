@@ -8,20 +8,20 @@
 
 @layer base {
   :root {
-    /* Core background - clean white */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    /* Dark background for Spline */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
 
     /* Card overlays */
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    /* Primary - Dark for CTAs */
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Light for CTAs on dark bg */
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 10%;
 
     /* Secondary - Light gray */
     --secondary: 0 0% 95%;
@@ -38,10 +38,10 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders - Light borders */
-    --border: 0 0% 90%;
-    --input: 0 0% 85%;
-    --ring: 0 0% 20%;
+    /* Borders - Light borders for dark mode */
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 80%;
 
     --radius: 0.5rem;
     
@@ -122,10 +122,18 @@
 
 @layer components {
   .nav-link {
-    @apply text-foreground/70 hover:text-foreground transition-colors duration-300 text-sm font-medium;
+    @apply text-foreground/80 hover:text-foreground transition-colors duration-300 text-sm font-medium;
   }
   
   .stat-text {
-    @apply text-lg md:text-xl text-foreground/60 font-medium;
+    @apply text-2xl md:text-3xl text-foreground/90 font-bold font-mono;
+  }
+  
+  .spline-container {
+    @apply fixed inset-0 w-full h-full -z-10;
+  }
+  
+  .glass-overlay {
+    @apply bg-background/5 backdrop-blur-sm rounded-lg border border-foreground/10;
   }
 }

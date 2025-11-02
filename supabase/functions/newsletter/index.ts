@@ -109,7 +109,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Get environment variables
-    const serviceAccountKeyStr = Deno.env.get("GOOGLE_SERVICE_ACCOUNT_KEY");
+    let serviceAccountKeyStr = Deno.env.get("GOOGLE_SERVICE_ACCOUNT_KEY");
     const spreadsheetId = Deno.env.get("GOOGLE_SPREADSHEET_ID");
 
     if (!serviceAccountKeyStr || !spreadsheetId) {
@@ -123,7 +123,32 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const serviceAccountKey = JSON.parse(serviceAccountKeyStr);
+    // Clean up the key string - remove any wrapping quotes or extra whitespace
+    serviceAccountKeyStr = serviceAccountKeyStr.trim();
+    
+    // If the entire JSON is wrapped in quotes, remove them
+    if (serviceAccountKeyStr.startsWith('"') && serviceAccountKeyStr.endsWith('"')) {
+      serviceAccountKeyStr = serviceAccountKeyStr.slice(1, -1);
+      // Unescape any escaped quotes
+      serviceAccountKeyStr = serviceAccountKeyStr.replace(/\\"/g, '"');
+    }
+
+    let serviceAccountKey;
+    try {
+      serviceAccountKey = JSON.parse(serviceAccountKeyStr);
+    } catch (parseError) {
+      console.error("Failed to parse service account key:", parseError);
+      console.error("Key starts with:", serviceAccountKeyStr.substring(0, 50));
+      return new Response(
+        JSON.stringify({ 
+          error: "Invalid service account key format. Please ensure you've pasted the complete JSON key from Google Cloud Console." 
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
     
     // Get access token
     console.log("Getting access token...");
